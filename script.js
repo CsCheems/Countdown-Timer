@@ -225,21 +225,21 @@ function AddTimeWithGiftSub(data){
     AddTime(getAdjustedTime(valorCalculado));
 }
 
-// function AddTimeWithSub(data) {
-//     console.log("Sub: ", data);
-//     const tierSub = data.sub_tier;
-//     const tiempo = obtenerTiers(tierSub, data.isPrime);
-//     let valorCalculado = Math.round(tiempo * 60);
-//     AddTime(getAdjustedTime(valorCalculado));
-// }
+function AddTimeWithSub(data) {
+    console.log("Sub: ", data);
+    const tierSub = data.sub_tier;
+    const tiempo = obtenerTiers(tierSub, data.isPrime);
+    let valorCalculado = Math.round(tiempo * 60);
+    AddTime(getAdjustedTime(valorCalculado));
+}
 
-// function AddTimeWithReSub(data) {
-//     console.log("ReSub: ", data);
-//     const tierSub = data.subTier;
-//     const tiempo = obtenerTiers(tierSub, data.isPrime);
-//     let valorCalculado = Math.round(tiempo * 60);
-//     AddTime(getAdjustedTime(valorCalculado));
-// }
+function AddTimeWithReSub(data) {
+    console.log("ReSub: ", data);
+    const tierSub = data.subTier;
+    const tiempo = obtenerTiers(tierSub, data.isPrime);
+    let valorCalculado = Math.round(tiempo * 60);
+    AddTime(getAdjustedTime(valorCalculado));
+}
 
 // function AddTimeWithGiftBomb(data){
 //     console.log("GiftBomb: ", data);
