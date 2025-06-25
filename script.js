@@ -110,7 +110,7 @@ client.on("Command.Triggered", (response) => {
     handleCommand(response.data);
 });
 
-
+//TWITCH EVENTS//
 client.on("Twitch.RewardRedemption", (response)=> {
     if(!marathonOver)
         RewardRedemption(response.data);
@@ -118,69 +118,69 @@ client.on("Twitch.RewardRedemption", (response)=> {
         return;
 });
 
-//TWITCH EVENTS//
-client.on("Twitch.Cheer", (response) => {
-    if(!marathonOver)
-        AddTimeWithCheers(response.data);
-    else
-        return;
-});
+// client.on("Twitch.Cheer", (response) => {
+//     if(!marathonOver)
+//         AddTimeWithCheers(response.data);
+//     else
+//         return;
+// });
 
-client.on("Twitch.Sub", (response) => {
-    if(!marathonOver)
-        AddTimeWithSub(response.data);
-    else
-        return;
-});
+// client.on("Twitch.Sub", (response) => {
+//     if(!marathonOver)
+//         AddTimeWithSub(response.data);
+//     else
+//         return;
+// });
 
-client.on("Twitch.ReSub", (response) => {
-    if(!marathonOver)
-        AddTimeWithReSub(response.data);
-    else
-        return;
-});
+// client.on("Twitch.ReSub", (response) => {
+//     if(!marathonOver)
+//         AddTimeWithReSub(response.data);
+//     else
+//         return;
+// });
 
-client.on("Twitch.GiftSub", (response) => {
-    if(!marathonOver)
-        AddTimeWithGiftSub(response.data);
-    else
-        return;
-});
+// client.on("Twitch.GiftSub", (response) => {
+//     if(!marathonOver)
+//         AddTimeWithGiftSub(response.data);
+//     else
+//         return;
+// });
 
-client.on("Twitch.GiftBomb", (response) => {
-    if(!marathonOver)
-        AddTimeWithGiftBomb(response.data);
-    else
-        return;
-});
+// client.on("Twitch.GiftBomb", (response) => {
+//     if(!marathonOver)
+//         AddTimeWithGiftBomb(response.data);
+//     else
+//         return;
+// });
 
-client.on("Kofi.Donation", (response) => {
-    if(!marathonOver)
-        addTimeKofiDonation(response.data);
-    else
-        return;
-});
+// //KOFI EVENTS
+// client.on("Kofi.Donation", (response) => {
+//     if(!marathonOver)
+//         addTimeKofiDonation(response.data);
+//     else
+//         return;
+// });
 
-client.on("Kofi.Subscription", (response) => {
-    if(!marathonOver)
-        addTimeKofiSubscription(response.data);
-    else
-        return;
-});
+// client.on("Kofi.Subscription", (response) => {
+//     if(!marathonOver)
+//         addTimeKofiSubscription(response.data);
+//     else
+//         return;
+// });
 
-client.on("Kofi.Resubscription", (response) => {
-    if(!marathonOver)
-        addTimeKofiResubscription(response.data);
-    else
-        return;
-});
+// client.on("Kofi.Resubscription", (response) => {
+//     if(!marathonOver)
+//         addTimeKofiResubscription(response.data);
+//     else
+//         return;
+// });
 
-client.on("Kofi.ShopOrder", (response) => {
-    if(!marathonOver)
-        addTimeKofiShopOrder(response.data);
-    else
-        return;
-});
+// client.on("Kofi.ShopOrder", (response) => {
+//     if(!marathonOver)
+//         addTimeKofiShopOrder(response.data);
+//     else
+//         return;
+// });
 
 // HELPER PARA MANEJAR TIEMPO PAUSADO
 function getAdjustedTime(calculatedTime) {
@@ -205,88 +205,88 @@ function RewardRedemption(data) {
     AddTime(getAdjustedTime(valorCalculado));
 }
 
-function AddTimeWithCheers(data) {
-    console.log("Cheers: ", data);
-    const bits = data.message.bits;
-    let valorCalculado = (bits / minBits) * bitsTime;
-    valorCalculado = Math.round(valorCalculado * 60);
-    AddTime(getAdjustedTime(valorCalculado));
-}
+// function AddTimeWithCheers(data) {
+//     console.log("Cheers: ", data);
+//     const bits = data.message.bits;
+//     let valorCalculado = (bits / minBits) * bitsTime;
+//     valorCalculado = Math.round(valorCalculado * 60);
+//     AddTime(getAdjustedTime(valorCalculado));
+// }
 
-function AddTimeWithGiftSub(data){
-    console.log("Gift Sub: ", data);
-    const giftId = data.communityGiftId;
-    if(giftId && processedGiftBombIds.has(giftId)){
-        return;
-    }
-    const tierSub = data.subTier;
-    const tiempo =  obtenerTiers(tierSub);
-    let valorCalculado = Math.round(tiempo * 60);
-    AddTime(getAdjustedTime(valorCalculado));
-}
+// function AddTimeWithGiftSub(data){
+//     console.log("Gift Sub: ", data);
+//     const giftId = data.communityGiftId;
+//     if(giftId && processedGiftBombIds.has(giftId)){
+//         return;
+//     }
+//     const tierSub = data.subTier;
+//     const tiempo =  obtenerTiers(tierSub);
+//     let valorCalculado = Math.round(tiempo * 60);
+//     AddTime(getAdjustedTime(valorCalculado));
+// }
 
-function AddTimeWithSub(data) {
-    console.log("Sub: ", data);
-    const tierSub = data.sub_tier;
-    const tiempo = obtenerTiers(tierSub, data.isPrime);
-    let valorCalculado = Math.round(tiempo * 60);
-    AddTime(getAdjustedTime(valorCalculado));
-}
+// function AddTimeWithSub(data) {
+//     console.log("Sub: ", data);
+//     const tierSub = data.sub_tier;
+//     const tiempo = obtenerTiers(tierSub, data.isPrime);
+//     let valorCalculado = Math.round(tiempo * 60);
+//     AddTime(getAdjustedTime(valorCalculado));
+// }
 
-function AddTimeWithReSub(data) {
-    console.log("ReSub: ", data);
-    const tierSub = data.subTier;
-    const tiempo = obtenerTiers(tierSub, data.isPrime);
-    let valorCalculado = Math.round(tiempo * 60);
-    AddTime(getAdjustedTime(valorCalculado));
-}
+// function AddTimeWithReSub(data) {
+//     console.log("ReSub: ", data);
+//     const tierSub = data.subTier;
+//     const tiempo = obtenerTiers(tierSub, data.isPrime);
+//     let valorCalculado = Math.round(tiempo * 60);
+//     AddTime(getAdjustedTime(valorCalculado));
+// }
 
-function AddTimeWithGiftBomb(data){
-    console.log("GiftBomb: ", data);
-    const giftBombId = data.id;
-    if(processedGiftBombIds.has(giftBombId)){
-        return;
-    }
-    processedGiftBombIds.add(giftBombId);
-    const totalGiftedSubs = data.recipients.length;
-    const tiempo = obtenerGiftBombTiers(data.recipients.sub_tier);
-    let valorCalculado = totalGiftedSubs * tiempo;
-    valorCalculado = Math.round(valorCalculado * 60);
-    AddTime(getAdjustedTime(valorCalculado));
-}
+// function AddTimeWithGiftBomb(data){
+//     console.log("GiftBomb: ", data);
+//     const giftBombId = data.id;
+//     if(processedGiftBombIds.has(giftBombId)){
+//         return;
+//     }
+//     processedGiftBombIds.add(giftBombId);
+//     const totalGiftedSubs = data.recipients.length;
+//     const tiempo = obtenerGiftBombTiers(data.recipients.sub_tier);
+//     let valorCalculado = totalGiftedSubs * tiempo;
+//     valorCalculado = Math.round(valorCalculado * 60);
+//     AddTime(getAdjustedTime(valorCalculado));
+// }
 
-function addTimeKofiDonation(data){
-    console.log(data);
-    const cantidad = parseFloat(data.amount);
-    let valorCalculado = 0;
+// function addTimeKofiDonation(data){
+//     console.log(data);
+//     const cantidad = parseFloat(data.amount);
+//     let valorCalculado = 0;
 
-    const tiersOrdenados = donationTiers.sort((a, b) => b.cantidad - a.cantidad);
+//     const tiersOrdenados = donationTiers.sort((a, b) => b.cantidad - a.cantidad);
 
-    for(const tier of tiersOrdenados){
-        if(cantidad >= tier.cantidad){
-            valorCalculado = tier.tiempo;
-            break;
-        }
-    }
+//     for(const tier of tiersOrdenados){
+//         if(cantidad >= tier.cantidad){
+//             valorCalculado = tier.tiempo;
+//             break;
+//         }
+//     }
 
-    if(valorCalculado > 0){
-        AddTime(getAdjustedTime(valorCalculado));
-    }else{
-        return;
-    }
-}
+//     if(valorCalculado > 0){
+//         AddTime(getAdjustedTime(valorCalculado));
+//     }else{
+//         return;
+//     }
+// }
 
-function addTimeKofiSubscription(data){
-    console.log(data);
-}
+// function addTimeKofiSubscription(data){
+//     console.log(data);
+// }
 
-function addTimeKofiResubscription(data){
-    console.log(data);
-}
+// function addTimeKofiResubscription(data){
+//     console.log(data);
+// }
 
-function addTimeKofiShopOrder(data){
-    console.log(data);
-}
+// function addTimeKofiShopOrder(data){
+//     console.log(data);
+// }
 
 
 //AGREGAR TIEMPO//
