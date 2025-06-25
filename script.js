@@ -205,25 +205,25 @@ function RewardRedemption(data) {
     AddTime(getAdjustedTime(valorCalculado));
 }
 
-// function AddTimeWithCheers(data) {
-//     console.log("Cheers: ", data);
-//     const bits = data.message.bits;
-//     let valorCalculado = (bits / minBits) * bitsTime;
-//     valorCalculado = Math.round(valorCalculado * 60);
-//     AddTime(getAdjustedTime(valorCalculado));
-// }
+function AddTimeWithCheers(data) {
+    console.log("Cheers: ", data);
+    const bits = data.message.bits;
+    let valorCalculado = (bits / minBits) * bitsTime;
+    valorCalculado = Math.round(valorCalculado * 60);
+    AddTime(getAdjustedTime(valorCalculado));
+}
 
-// function AddTimeWithGiftSub(data){
-//     console.log("Gift Sub: ", data);
-//     const giftId = data.communityGiftId;
-//     if(giftId && processedGiftBombIds.has(giftId)){
-//         return;
-//     }
-//     const tierSub = data.subTier;
-//     const tiempo =  obtenerTiers(tierSub);
-//     let valorCalculado = Math.round(tiempo * 60);
-//     AddTime(getAdjustedTime(valorCalculado));
-// }
+function AddTimeWithGiftSub(data){
+    console.log("Gift Sub: ", data);
+    const giftId = data.communityGiftId;
+    if(giftId && processedGiftBombIds.has(giftId)){
+        return;
+    }
+    const tierSub = data.subTier;
+    const tiempo =  obtenerTiers(tierSub);
+    let valorCalculado = Math.round(tiempo * 60);
+    AddTime(getAdjustedTime(valorCalculado));
+}
 
 // function AddTimeWithSub(data) {
 //     console.log("Sub: ", data);
