@@ -125,19 +125,19 @@ client.on("Twitch.Cheer", (response) => {
         return;
 });
 
-// client.on("Twitch.Sub", (response) => {
-//     if(!marathonOver)
-//         AddTimeWithSub(response.data);
-//     else
-//         return;
-// });
+client.on("Twitch.Sub", (response) => {
+    if(!marathonOver)
+        AddTimeWithSub(response.data);
+    else
+        return;
+});
 
-// client.on("Twitch.ReSub", (response) => {
-//     if(!marathonOver)
-//         AddTimeWithReSub(response.data);
-//     else
-//         return;
-// });
+client.on("Twitch.ReSub", (response) => {
+    if(!marathonOver)
+        AddTimeWithReSub(response.data);
+    else
+        return;
+});
 
 client.on("Twitch.GiftSub", (response) => {
     if(!marathonOver)
