@@ -118,12 +118,12 @@ client.on("Twitch.RewardRedemption", (response)=> {
         return;
 });
 
-// client.on("Twitch.Cheer", (response) => {
-//     if(!marathonOver)
-//         AddTimeWithCheers(response.data);
-//     else
-//         return;
-// });
+client.on("Twitch.Cheer", (response) => {
+    if(!marathonOver)
+        AddTimeWithCheers(response.data);
+    else
+        return;
+});
 
 // client.on("Twitch.Sub", (response) => {
 //     if(!marathonOver)
@@ -139,12 +139,12 @@ client.on("Twitch.RewardRedemption", (response)=> {
 //         return;
 // });
 
-// client.on("Twitch.GiftSub", (response) => {
-//     if(!marathonOver)
-//         AddTimeWithGiftSub(response.data);
-//     else
-//         return;
-// });
+client.on("Twitch.GiftSub", (response) => {
+    if(!marathonOver)
+        AddTimeWithGiftSub(response.data);
+    else
+        return;
+});
 
 // client.on("Twitch.GiftBomb", (response) => {
 //     if(!marathonOver)
