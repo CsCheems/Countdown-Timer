@@ -161,26 +161,26 @@ client.on("Kofi.Donation", (response) => {
         return;
 });
 
-// client.on("Kofi.Subscription", (response) => {
-//     if(!marathonOver)
-//         addTimeKofiSubscription(response.data);
-//     else
-//         return;
-// });
+client.on("Kofi.Subscription", (response) => {
+    if(!marathonOver)
+        addTimeKofiSubscription(response.data);
+    else
+        return;
+});
 
-// client.on("Kofi.Resubscription", (response) => {
-//     if(!marathonOver)
-//         addTimeKofiResubscription(response.data);
-//     else
-//         return;
-// });
+client.on("Kofi.Resubscription", (response) => {
+    if(!marathonOver)
+        addTimeKofiResubscription(response.data);
+    else
+        return;
+});
 
-// client.on("Kofi.ShopOrder", (response) => {
-//     if(!marathonOver)
-//         addTimeKofiShopOrder(response.data);
-//     else
-//         return;
-// });
+client.on("Kofi.ShopOrder", (response) => {
+    if(!marathonOver)
+        addTimeKofiShopOrder(response.data);
+    else
+        return;
+});
 
 // HELPER PARA MANEJAR TIEMPO PAUSADO
 function getAdjustedTime(calculatedTime) {
@@ -276,17 +276,17 @@ function addTimeKofiDonation(data){
     }
 }
 
-// function addTimeKofiSubscription(data){
-//     console.log(data);
-// }
+function addTimeKofiSubscription(data){
+    console.log(data);
+}
 
-// function addTimeKofiResubscription(data){
-//     console.log(data);
-// }
+function addTimeKofiResubscription(data){
+    console.log(data);
+}
 
-// function addTimeKofiShopOrder(data){
-//     console.log(data);
-// }
+function addTimeKofiShopOrder(data){
+    console.log(data);
+}
 
 
 //AGREGAR TIEMPO//
@@ -410,7 +410,6 @@ function setConnectionStatus(connected){
     }
 }
 
-// Lógica de contador de bits y modo combo
 function handleBitCounting() {
     contadorBits++;
     console.log("Contador: ", contadorBits);
@@ -661,7 +660,6 @@ function obtenerGiftBombTiers(sub_tier) {
     }
 }
 
-// Funciones auxiliares que faltan en el código original o que se asumen globales
 function obtenerBooleanos(paramName, defaultValue) {
     const param = urlParameters.get(paramName);
     if (param === null) {
@@ -683,80 +681,3 @@ function getPausedTime() {
     const pausedTime = localStorage.getItem('pause');
     return pausedTime ? parseInt(pausedTime, 10) : 0;
 }
-
-// const data = {
-//   "gifts": 6, /* 0 - Prime, 1 - Tier 1, 2 - Tier 2, 3 - Tier 3 */
-//   "color": "#008D99",
-//   "emotes": [],
-//   "message": "",
-//   "userId": 123456,
-//   "userName": "<username>",
-//   "displayName": "<display name>",
-//   "role": 1 /* 1 - Viewer, 2 - VIP, 3 - Moderator, 4 - Broadcaster  */
-// }
-
-
-//   const data = {
-//     "id": "6657894621625748",
-//     "total": 2,
-//     "cumulative_total": 2,
-//     "sub_tier": 3000,
-//     "recipients": [
-//       {
-//         "id": "1234560",
-//         "login": "username0",
-//         "name": "userName0",
-//         "type": "twitch"
-//       },
-//       {
-//         "id": "1234561",
-//         "login": "username1",
-//         "name": "userName1",
-//         "type": "twitch"
-//       },
-//       {
-//         "id": "1234562",
-//         "login": "username2",
-//         "name": "userName2",
-//         "type": "twitch"
-//       },
-//       {
-//         "id": "1234563",
-//         "login": "username3",
-//         "name": "userName3",
-//         "type": "twitch"
-//       },
-//       {
-//         "id": "1234564",
-//         "login": "username4",
-//         "name": "userName4",
-//         "type": "twitch"
-//       }
-//     ],
-//     "user": {
-//       "role": 1,
-//       "badges": [
-//         {
-//           "name": "badge1",
-//           "version": "0",
-//           "imageUrl": "https://static-cdn.jtvnw.net/badges/v1/wedw232-sdq2-34w8-weq9-987asd8w7/3",
-//           "info": ""
-//         }
-//       ],
-//       "color": "#ABCDEF",
-//       "subscribed": false,
-//       "monthsSubscribed": 0,
-//       "id": "987654",
-//       "login": "username",
-//       "name": "userName",
-//       "type": "twitch"
-//     },
-//     "messageId": "98765423-qwd3a-qwef-jtzz8-56476er21gdg",
-//     "systemMessage": "userName is gifting 5 Tier 1 Subs to OtherUser's community! They've gifted a total of 5 in the channel!",
-//     "isTest": false
-//   }
-
-// const data = {
-//   "amount": "6.00",
-//   "currency": "USD",
-// }
