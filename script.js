@@ -161,12 +161,12 @@ client.on("Kofi.Donation", (response) => {
         return;
 });
 
-// client.on("Kofi.Subscription", (response) => {
-//     if(!marathonOver)
-//         addTimeKofiSubscription(response.data);
-//     else
-//         return;
-// });
+client.on("Kofi.Subscription", (response) => {
+    if(!marathonOver)
+        addTimeKofiSubscription(response.data);
+    else
+        return;
+});
 
 // client.on("Kofi.Resubscription", (response) => {
 //     if(!marathonOver)
@@ -276,13 +276,13 @@ function addTimeKofiDonation(data){
     }
 }
 
-// function addTimeKofiSubscription(data){
-//     console.log(data);
-// }
+function addTimeKofiSubscription(data){
+    console.log(data);
+}
 
-// function addTimeKofiResubscription(data){
-//     console.log(data);
-// }
+function addTimeKofiResubscription(data){
+    console.log(data);
+}
 
 // function addTimeKofiShopOrder(data){
 //     console.log(data);
