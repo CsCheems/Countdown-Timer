@@ -43,9 +43,9 @@ const donationTiers = [
 
 //VISUAL
 const colorFondo = urlParameters.get("fondoColor") || "#000000";
-const opacity = urlParameters.get("opacidad") || 0.75;
+const opacity = urlParameters.get("opacidad") || 0.6;
 const colorFuente = urlParameters.get("colorFuente") || "#ffffff";
-const fuenteLetra = urlParameters.get("fuenteLetra") || "Arial";
+const fuenteLetra = urlParameters.get("fuenteLetra") || "Consolas";
 
 //MISC
 const maxIncrementTime = 5;
@@ -146,20 +146,20 @@ client.on("Twitch.GiftSub", (response) => {
         return;
 });
 
-// client.on("Twitch.GiftBomb", (response) => {
-//     if(!marathonOver)
-//         AddTimeWithGiftBomb(response.data);
-//     else
-//         return;
-// });
+client.on("Twitch.GiftBomb", (response) => {
+    if(!marathonOver)
+        AddTimeWithGiftBomb(response.data);
+    else
+        return;
+});
 
 // //KOFI EVENTS
-// client.on("Kofi.Donation", (response) => {
-//     if(!marathonOver)
-//         addTimeKofiDonation(response.data);
-//     else
-//         return;
-// });
+client.on("Kofi.Donation", (response) => {
+    if(!marathonOver)
+        addTimeKofiDonation(response.data);
+    else
+        return;
+});
 
 // client.on("Kofi.Subscription", (response) => {
 //     if(!marathonOver)
@@ -241,40 +241,40 @@ function AddTimeWithReSub(data) {
     AddTime(getAdjustedTime(valorCalculado));
 }
 
-// function AddTimeWithGiftBomb(data){
-//     console.log("GiftBomb: ", data);
-//     const giftBombId = data.id;
-//     if(processedGiftBombIds.has(giftBombId)){
-//         return;
-//     }
-//     processedGiftBombIds.add(giftBombId);
-//     const totalGiftedSubs = data.recipients.length;
-//     const tiempo = obtenerGiftBombTiers(data.recipients.sub_tier);
-//     let valorCalculado = totalGiftedSubs * tiempo;
-//     valorCalculado = Math.round(valorCalculado * 60);
-//     AddTime(getAdjustedTime(valorCalculado));
-// }
+function AddTimeWithGiftBomb(data){
+    console.log("GiftBomb: ", data);
+    const giftBombId = data.id;
+    if(processedGiftBombIds.has(giftBombId)){
+        return;
+    }
+    processedGiftBombIds.add(giftBombId);
+    const totalGiftedSubs = data.recipients.length;
+    const tiempo = obtenerGiftBombTiers(data.recipients.sub_tier);
+    let valorCalculado = totalGiftedSubs * tiempo;
+    valorCalculado = Math.round(valorCalculado * 60);
+    AddTime(getAdjustedTime(valorCalculado));
+}
 
-// function addTimeKofiDonation(data){
-//     console.log(data);
-//     const cantidad = parseFloat(data.amount);
-//     let valorCalculado = 0;
+function addTimeKofiDonation(data){
+    console.log(data);
+    const cantidad = parseFloat(data.amount);
+    let valorCalculado = 0;
 
-//     const tiersOrdenados = donationTiers.sort((a, b) => b.cantidad - a.cantidad);
+    const tiersOrdenados = donationTiers.sort((a, b) => b.cantidad - a.cantidad);
 
-//     for(const tier of tiersOrdenados){
-//         if(cantidad >= tier.cantidad){
-//             valorCalculado = tier.tiempo;
-//             break;
-//         }
-//     }
+    for(const tier of tiersOrdenados){
+        if(cantidad >= tier.cantidad){
+            valorCalculado = tier.tiempo;
+            break;
+        }
+    }
 
-//     if(valorCalculado > 0){
-//         AddTime(getAdjustedTime(valorCalculado));
-//     }else{
-//         return;
-//     }
-// }
+    if(valorCalculado > 0){
+        AddTime(getAdjustedTime(valorCalculado));
+    }else{
+        return;
+    }
+}
 
 // function addTimeKofiSubscription(data){
 //     console.log(data);
