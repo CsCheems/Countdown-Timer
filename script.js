@@ -17,7 +17,7 @@ const StreamerbotAddress = urlParameters.get("address") || "127.0.0.1";
 // CONSTANTES
 const comboMode = obtenerBooleanos("comboMode", false);
 const startingTime = GetIntParam("startingTime", 3600);
-const maxTime = GetIntParam("maxTime", 7200);
+const maxTime = GetIntParam("maxTime", 18000);
 
 //TWITCH
 const tier0 = GetIntParam("tier0", 17);
